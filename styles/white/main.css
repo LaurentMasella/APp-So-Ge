@@ -285,11 +285,13 @@
 }
 
 .graph {
-	padding: 20px 0px 20px 0px;
+	/*padding: 20px 0px 20px 0px;*/
+	padding: 20px 4px;
 	position: relative;
 	margin-right: 1em;
-	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
-	color: #FEFEFE;
+	border: 1px solid #e6e6e6;
+	/*box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
+	color: #FEFEFE;*/
 	display: inline-block;
 }
 
@@ -388,6 +390,7 @@
 	margin-bottom: 200px;
 	float: right;
 	clear: both;
+	margin-right: 16px;
 }
 
 #nextButton {
@@ -572,12 +575,53 @@ box-shadow:         1px 1px 5px rgba(10, 10, 10, 0.2);
 	/*background-color: #FFFFFF;*/
 	border-bottom: #F8F8F8;
 	padding: 7px;
+	padding-left: 40px;
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 0.8em;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #D71236;
+}
+
+span.crTitle1 {
+	background: url('../../images/white/crPicto-01.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle2 {
+	background: url('../../images/white/crPicto-02.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle3 {
+	background: url('../../images/white/crPicto-03.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle4 {
+	background: url('../../images/white/crPicto-04.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle5 {
+	background: url('../../images/white/crPicto-05.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle6 {
+	background: url('../../images/white/crPicto-06.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle7 {
+	background: url('../../images/white/crPicto-07.png') no-repeat 5px 5px;
+	background-size: 35px;
+}
+
+span.crTitle8 {
+	background: url('../../images/white/crPicto-08.png') no-repeat 5px 5px;
+	background-size: 35px;
 }
 
 .crCard span.crRequester {
@@ -657,6 +701,7 @@ box-shadow:         1px 1px 5px rgba(10, 10, 10, 0.2) inset;
 	color: #5f5f5f;
 	border-bottom: #F8F8F8;
 	padding: 7px;
+	padding-left: 40px;
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 0.8em;

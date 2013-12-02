@@ -1,3 +1,17 @@
+/*function randOrd() {
+    return (Math.round(Math.random())-0.8); 
+}
+
+$(document).ready(function() {
+    var klasses = [ 'crTitle1', 'crTitle2', 'crTitle3', 'crTitle4', 'crTitle5', 'crTitle6', 'crTitle7', 'crTitle8' ];
+    klasses.sort( randOrd );
+    $('.crTitle').each(function(i, val) {
+        $(this).addClass(klasses[i]);
+    });
+});*/
+
+
+
 var d = document;
 var wasACRSelected = 0;
 
@@ -1033,9 +1047,9 @@ function readingMainJson(fileUrl,callback) {
 
 				var j = 0;
 				var k = 0;
-
+				
 				for (var i = 0; i < myObject.length; i++) {
-
+					var z = Math.floor((Math.random()*8)+1);
 					if(k == 0) {
 						elemToBeGenerated += "<div>";
 					}
@@ -1048,7 +1062,7 @@ function readingMainJson(fileUrl,callback) {
 
 					currentCRSelected = myObject[i].requestCode;
 					elemToBeGenerated += "<span onclick=\"creditRequestSelected('"+currentCRSelected+"')\" class='"+mainColor+"'>";
-						elemToBeGenerated += "<span class='crTitle'>";
+						elemToBeGenerated += "<span class='crTitle crTitle"+z+"'>";
 						//elemToBeGenerated += "<b>" + myObject[i].requestCode + "</b>";
 						elemToBeGenerated += "<b>" + myObject[i].counterparty + "</b>";
 						elemToBeGenerated += "</span>";
@@ -1245,8 +1259,8 @@ function readingSpecificJson(fileUrl,callback) {
 				if(d.getElementsByClassName('dashboardClientSelected')) {
 
 					var elemToBeGenerated = "";
-
-					elemToBeGenerated += "<span class='clientLogo'><img src='' alt='' /></span>";					
+					var z = Math.floor((Math.random()*8)+1);
+					elemToBeGenerated += "<span class='clientLogo clientLogo"+z+"'><img src='' alt='' /></span>";					
 					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + "<br/>" + "<span id='requestLbl'>" + myObject.requestLbl + "</span></span>";
 					d.getElementById('dashboardClientSelected').innerHTML = elemToBeGenerated;
 
@@ -1254,8 +1268,11 @@ function readingSpecificJson(fileUrl,callback) {
 
 					elemToBeGenerated += "<div class='graphs'><div class='graph'><h2 class='graph-title'>OR</h2><span class='graph-rate or'>5</span><canvas id='chartDoughnutOR' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Rating and Profitability</h3></div><div class='graph'><h2 class='graph-title'>RW</h2><span class='graph-rate'>45%</span><canvas id='chartDoughnutRW' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Weight</h3></div><div class='graph graph-medium'><h2 class='graph-title graph-title-line-chart'>VALUE</h6><canvas id='lineChartValue' width='432px' height='188px'></canvas></div></div>";
 
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
+					//elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
+					elemToBeGenerated += "<div class='tableHead'><p class='requestInfo'>Credit Request Information</p><div class='redLine'></div><div class='clear'></div></div>";
+
+
+					elemToBeGenerated += "<div class='tableRow tableRow1'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Counterparty</span><span class='creditRequestR'>"+myObject.counterparty+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team</span><span class='creditRequestR'>"+myObject.teamLbl+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team Pending Actions</span><span class='creditRequestR'>"+myObject.teamPendingAction+"</span></div>";
