@@ -695,12 +695,21 @@ window.setInterval("hackingIOS7()", 5);
 
 function creditRequestSelected(jsonAccountID) {
 
-	d.getElementById('displayAsThumbnails').style.opacity = 0;
-	d.getElementById('displayAsList').style.opacity = 0;
-	d.getElementById('thumbNails').style.opacity = 0;
-	d.getElementById('listNails').style.opacity = 0;	
-
-	d.getElementById('documentsSearchTools').style.display = "none";
+	if(d.getElementById('displayAsThumbnails')) {
+		d.getElementById('displayAsThumbnails').style.opacity = 0;	
+	};
+	if(d.getElementById('displayAsList')) {
+		d.getElementById('displayAsList').style.opacity = 0;	
+	};
+	if(d.getElementById('thumbNails')) {
+		d.getElementById('thumbNails').style.opacity = 0;	
+	};
+	if(d.getElementById('listNails')) {
+		d.getElementById('listNails').style.opacity = 0;		
+	};
+	if(d.getElementById('documentsSearchTools')) {
+		d.getElementById('documentsSearchTools').style.display = "none";	
+	}
 
 	wasACRSelected++;
 	changingMenuState('2');

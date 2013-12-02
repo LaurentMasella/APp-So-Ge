@@ -10,19 +10,6 @@ function Timeout(fn, interval) {
     };
 }
 
-/*
-var t = new Timeout(function () {
-    alert('this is a test');
-}, 5000);
-console.log(t.cleared); // false
-t.clear();
-console.log(t.cleared); // true
-
-if(t.clear) {
-	t.clear;
-}
-*/
-
 //	Top Menu navigation animations
 var buttonElem1, buttonElem2, buttonElem3, stepNumber1, stepNumber2, stepNumber3, stepNumber4, buttonElem4, step12, step23, step34;
 function changingMenuState(whichSteAreWe) {
@@ -127,7 +114,6 @@ function changingDashMenuState(whichSteAreWe) {
 
 function onMyTransitionEnd(previouslyAnimatedElem,previousSelectorKind,previousWhichOne,nextAnimatedElem,selectorKind,whichOne,newClass,newStyle,styleValue) {
 
-	console.log("previouslyAnimatedElem " + previouslyAnimatedElem + " previousSelectorKind " + previousSelectorKind + " previousWhichOne " + previousWhichOne + " nextAnimatedElem " + nextAnimatedElem + " selectorKind " + selectorKind + " whichOne " + whichOne + " newClass " + newClass + " newStyle " + newStyle + " styleValue " + styleValue);
 	var previous, transition;
 
 	if(previousSelectorKind == "getElementsByClassName") {
@@ -171,7 +157,6 @@ function onMyTransitionEnd(previouslyAnimatedElem,previousSelectorKind,previousW
 				}
 			}
 		} else if(selectorKind == "getElementsByTagName") {
-			console.log('TEST');
 			next = d.getElementsByTagName(nextAnimatedElem);
 			
 			if(whichOne == "all") {
@@ -233,7 +218,7 @@ function settingUpNav() {
 			DashButtonElem1 = document.getElementById('dash1');
 			DashButtonElem2 = document.getElementById('dash2');
 			DashButtonElem3 = document.getElementById('dash3');
-			DashButtonElem1.setAttribute('onclick', "changingDashMenuState('1');readingSpecificJson('');"); // startingChart
+			DashButtonElem1.setAttribute('onclick', "changingDashMenuState('1');runningDashAjaxCall('verify-dashboard.html');"); // startingChart
 			DashButtonElem2.setAttribute('onclick', "changingDashMenuState('2');runningDashAjaxCall('verify-documents.html');");
 			DashButtonElem3.setAttribute('onclick', "changingDashMenuState('3');runningDashAjaxCall('verify-summury.html');");
 	}
@@ -246,7 +231,6 @@ function settingUpNav() {
 			request[i].setAttribute('onclick', "dashContent('content','content','verify-dashboard.html');")
 		}
 	}
-
 }
 
 
@@ -267,16 +251,24 @@ step23 = d.getElementById('step23');
 step34 = d.getElementById('step34');
 buttonElem1.setAttribute('onclick',"didYouSelectYourCr('1', 'index.html', hidingMenu, 'One');");
 buttonElem2.setAttribute('onclick',"didYouSelectYourCr('2', 'verify-dashboard.html', creditRequestSelected, 'Two');");
-buttonElem3.setAttribute('onclick',"didYouSelectYourCr('3' , 'action.html', hidingMenu, 'Three');");
+buttonElem3.setAttribute('onclick',"didYouSelectYourCr('3' , 'action.html', '', 'Three');");
 buttonElem4.setAttribute('onclick',"didYouSelectYourCr('4', 'submit.html', hidingMenu, 'Four');");
 
 
 function didYouSelectYourCr(newState,url,initCallback,amIGoing) {
-
 	if(wasACRSelected != 0) {
 		if(initCallback) {
 			if(url == "index.html") {
 				wasACRSelected = 0;
+				d.getElementById('displayAsList').style.opacity = 1;
+				d.getElementById('displayAsThumbnails').style.opacity = 1;
+				d.getElementById('thumbNails').style.opacity = 1;
+				d.getElementById('listNails').style.opacity = 1;				
+			} else {
+				d.getElementById('displayAsList').style.opacity = 0;
+				d.getElementById('displayAsThumbnails').style.opacity = 0;
+				d.getElementById('thumbNails').style.opacity = 1;
+				d.getElementById('listNails').style.opacity = 1;	
 			}
 
 			var menuItemElem = "step" + amIGoing;
@@ -284,6 +276,7 @@ function didYouSelectYourCr(newState,url,initCallback,amIGoing) {
 			if (d.getElementById(menuItemElem).className == "setToBlue") {
 				if(amIGoing == "One") {
 					if (buttonElem2.className == "setToBlue")
+					
 						runningAjaxCall(url,initCallback);
 
 						backToInitState();
@@ -310,6 +303,12 @@ function didYouSelectYourCr(newState,url,initCallback,amIGoing) {
 		} else {
 			if(url == "index.html") {
 				wasACRSelected = 0;
+				d.getElementById('displayAsThumbnails').style.opacity = 1;
+				d.getElementById('displayAsList').style.opacity = 1;
+				d.getElementById('thumbNails').style.opacity = 1;
+				d.getElementById('listNails').style.opacity = 1;				
+				d.getElementsByClassName('swipePrevious')[0].style.opacity = 0;
+				d.getElementsByClassName('swipeNext')[0].style.opacity = 0;				
 			}
 
 			var menuItemElem = "step" + amIGoing;
@@ -653,13 +652,65 @@ function hackingIOS7() {
 function touchEnd(event){
      event.preventDefault();
   	chacingColorOfSlider();
+};
 
+document.ontouchstart = function(e) {
+//    stickingThings();
+};
+
+document.ontouchmove = function(e) {
+//    stickingThings();
+};
+
+document.ontouchend = function(e) {
+
+	if ( (d.getElementById('rangeSlider').value > 50) && (d.getElementById('rangeSlider').value < 70) ) {
+		console.log('1');
+		d.getElementById('rangeLine').className = "neutral";
+		d.getElementById('accept').className = "range";
+		d.getElementById('rangeSlider').value = 0;
+
+	} else if ( (d.getElementById('rangeSlider').value < 50) &&  (d.getElementById('rangeSlider').value > 30) ) {
+		console.log('2');
+		d.getElementById('rangeLine').className = "orange";
+		d.getElementById('accept').className = "neutral";
+		d.getElementById('rangeSlider').value = 25;
+
+	} else if (d.getElementById('rangeSlider').value < 50) {
+		console.log('3');
+		d.getElementById('rangeLine').className = "green";
+		d.getElementById('accept').className = "rangeValidated";
+		d.getElementById('rangeSlider').value = 0;
+
+	} else if (d.getElementById('rangeSlider').value > 70) {
+		console.log('4');
+		d.getElementById('rangeLine').className = "red";
+		d.getElementById('accept').className = "rangeCanceled";
+		d.getElementById('rangeSlider').value = 100;
+	}
 };
 
 window.setInterval("hackingIOS7()", 5);
 
 
 function creditRequestSelected(jsonAccountID) {
+
+	if(d.getElementById('displayAsThumbnails')) {
+		d.getElementById('displayAsThumbnails').style.opacity = 0;	
+	};
+	if(d.getElementById('displayAsList')) {
+		d.getElementById('displayAsList').style.opacity = 0;	
+	};
+	if(d.getElementById('thumbNails')) {
+		d.getElementById('thumbNails').style.opacity = 0;	
+	};
+	if(d.getElementById('listNails')) {
+		d.getElementById('listNails').style.opacity = 0;		
+	};
+	if(d.getElementById('documentsSearchTools')) {
+		d.getElementById('documentsSearchTools').style.display = "none";	
+	}
+
 	wasACRSelected++;
 	changingMenuState('2');
 	backToInitState();
@@ -686,43 +737,18 @@ function creditRequestSelected(jsonAccountID) {
 	settingUpNav();	
 }
 
-
-/*
 function runningAjaxCall(currentURL,callback) {
 
-	d.getElementById('content').className = "contentToBeRemoved";
+	removingDocViewer();
 
-	if(d.getElementById('delayingArrival')) {
-		window.setTimeout(function(){d.getElementById('delayingArrival').className = "hiddenArrival"},750);	
+	d.getElementById('UXLoader').style.display = "none";
+	if(d.getElementById('documentsSearchTools')) {
+		d.getElementById('documentsSearchTools').style.display = "none";	
+	};
+	if(d.getElementById('dashMainContentDumentsSection')){
+		d.getElementById('dashMainContentDumentsSection').style.display = "none";	
 	}
 	
-
-
-	d.getElementById('UXLoader').style.display = "block";
-	
-	var t = new Timeout(function () {
-		$('#content').load(currentURL + ' .content',
-			function(){
-				d.getElementById('UXLoader').style.display = "none";
-
-				settingUpFixedNav();
-				d.getElementById('content').className = "contentReset";
-				if(callback) {
-					callback();	
-				};
-				if(d.getElementById('dash1')) {
-					settingUpNav();
-					if(currentURL == "index.html") {
-						notInitStartSwipeCarouel();
-					}
-				}
-			})
-	}, 1000);
-
-}
-*/
-function runningAjaxCall(currentURL,callback) {
-
 	var container = d.getElementById('content');
 	container.className = "contentToBeRemoved";
 	var currentSections = container.getElementsByTagName('section');
@@ -746,6 +772,13 @@ function runningAjaxCall(currentURL,callback) {
 		var secToBeKept;
 
 		if(currentURL == "index.html") {
+
+			d.getElementById('topNavBarBackButton').style.opacity = 0;
+			d.getElementById('nextButton').style.opacity = 0;
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.display = "none"},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.display = "none"},500);
+			d.getElementById('navStepMenu').style.paddingLeft = "110px";
+
 			d.getElementById('indexSection').style.display = "block";
 			d.getElementById('requests').className = "scaleNormal";
 			d.getElementById('requests').style.display = "block";
@@ -754,6 +787,20 @@ function runningAjaxCall(currentURL,callback) {
 			
 
 		} else if(currentURL == "verify-dashboard.html") {
+
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.display = 'inline-block';
+
+			var newOnclick = d.getElementById('stepOne').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+			
+			var newOnclick2 = d.getElementById('stepThree').getAttribute('onclick');
+			d.getElementById('nextButton').setAttribute('onclick', newOnclick2);			
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.opacity = 1},500);
+
+			
 			d.getElementById('dashMain').style.display = "block";
 			d.getElementById('content').style.position = "relative";
 			d.getElementsByClassName('navDashBoard')[0].style.display = "block";
@@ -763,11 +810,36 @@ function runningAjaxCall(currentURL,callback) {
 			
 
 	 	} else if(currentURL == "action.html") {
+
+	 		d.getElementById('navStepMenu').style.paddingLeft = "0px";
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.display = 'inline-block';
+			
+			var newOnclick = d.getElementById('stepTwo').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+			
+			var newOnclick2 = d.getElementById('stepFour').getAttribute('onclick');
+			d.getElementById('nextButton').setAttribute('onclick', newOnclick2);	
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.opacity = 1},500);	 		
+
 	 		d.getElementById('content').style.position = "relative";
 	 		d.getElementById('actionForm').style.display = "block";
 			d.getElementById('content').style.position = "fixed";
 
 	 	} else if(currentURL == "submit.html") {
+
+	 		d.getElementById('navStepMenu').style.paddingLeft = "0px";
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.opacity = 0;
+
+			var newOnclick = d.getElementById('stepThree').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.display = "none"},500);
+
 	 		d.getElementById('content').style.position = "relative";
 	 		d.getElementById('submitSection').style.display = "block";
 			d.getElementById('content').style.position = "fixed";
@@ -798,23 +870,17 @@ function runningAjaxCall(currentURL,callback) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 function runningDashAjaxCall(currentURL,callback) {
 
+	removingDocViewer();
+
+	d.getElementById('UXLoader').style.display = "none";
+	d.getElementById('documentsSearchTools').style.display = "none";
+	d.getElementById('dashMainContentDumentsSection').style.display = "none";
 
 	var container = d.getElementById('dashMain');
 	container.className = "dashMainContentSectionToBeRemoved";
 	var currentSections = container.getElementsByTagName('section');
-
 
 	if(d.getElementById('dashMainContentSection').style.display) {
 		d.getElementById('dashMainContentSection').style.opacity = 0;
@@ -827,46 +893,68 @@ function runningDashAjaxCall(currentURL,callback) {
 		for (var i = 0; i < currentSections.length; i++) {
 			currentSections[i].style.display = "none";
 		}
-		console.log('dash');
 		if(currentURL == "verify-documents.html") {
+
+			d.getElementById('navStepMenu').style.paddingLeft = "0px";
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.display = 'inline-block';
+
+			var newOnclick = d.getElementById('stepOne').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+
+			var newOnclick2 = d.getElementById('stepThree').getAttribute('onclick');
+			d.getElementById('nextButton').setAttribute('onclick', newOnclick2);			
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.opacity = 1},500);	 
+
+			documentsSortTools();
 			d.getElementById('dashMainContentDumentsSection').style.display = "block";
 			container.className = "dashMainContentSectionReset";
-			console.log(d.getElementById('dashMainContentDumentsSection'));
 			d.getElementById('UXLoader').style.display = "none";
+			d.getElementById('documentsSearchTools').style.display = "block";
 
 		} else  if (currentURL == "verify-summury.html") {
+			
+			d.getElementById('navStepMenu').style.paddingLeft = "0px";
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.display = 'inline-block';
+
+			var newOnclick = d.getElementById('stepOne').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+
+			var newOnclick2 = d.getElementById('stepThree').getAttribute('onclick');
+			d.getElementById('nextButton').setAttribute('onclick', newOnclick2);
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.opacity = 1},500);	 
+
 			d.getElementById('dashMainContentSummarySection').style.display = "block";
 			container.className = "dashMainContentSectionReset";
-			console.log(d.getElementById('dashMainContentSummarySection'));
 			d.getElementById('UXLoader').style.display = "none";
+		} else  if (currentURL == "verify-dashboard.html") {
+
+			d.getElementById('navStepMenu').style.paddingLeft = "0px";
+			d.getElementById('topNavBarBackButton').style.display = "inline-block";
+			d.getElementById('nextButton').style.display = 'inline-block';
+
+			var newOnclick = d.getElementById('stepOne').getAttribute('onclick');
+			d.getElementById('topNavBarBackButton').setAttribute('onclick', newOnclick);
+
+			var newOnclick2 = d.getElementById('stepThree').getAttribute('onclick');
+			d.getElementById('nextButton').setAttribute('onclick', newOnclick2);
+
+			window.setTimeout(function(){d.getElementById('topNavBarBackButton').style.opacity = 1},500);
+			window.setTimeout(function(){d.getElementById('nextButton').style.opacity = 1},500);			
+
+			d.getElementById('dashMainContentSection').style.display = "block";
+			container.className = "dashMainContentSectionReset";
+			d.getElementById('UXLoader').style.display = "none";
+			window.setTimeout(function(){d.getElementById('dashMainContentSection').style.opacity = 1},50);
 		}
 
 	}, 1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function settingUpFixedNav() {
@@ -874,35 +962,6 @@ function settingUpFixedNav() {
 	d.getElementsByTagName('header')[0].style.top = "0px";
 	d.getElementsByTagName('header')[0].style.height = "85px";
 }
-/*
-function runningDashAjaxCall(currentURL,callback) {
-
-
-	d.getElementById('dashMainContentSection').className = "dashMainContentSectionToBeRemoved";
-
-	d.getElementById('UXLoader').style.display = "block";
-
-	var t = new Timeout(function () {
-		$('#content').load(currentURL + ' .content',
-			function(){
-				d.getElementById('dashMainContentSection').className = "dashMainContentSectionToBeRemoved";
-
-				var t = new Timeout(function () {
-			    	d.getElementById('dashMainContentSection').className = "dashMainContentSectionReset";d.getElementById('UXLoader').style.display = "none";
-				}, 50);					
-				
-				if(callback) {
-					callback();	
-				};
-				if(d.getElementById('dash1')) {
-					settingUpNav();
-					settingUpFixedNav();
-
-				}
-			})
-	}, 1000);
-}
-*/
 
 function displayingCreditRequest(presentationStyle) {
 
@@ -963,6 +1022,7 @@ function startingSwipeCarousel() {
 
 function hidingMenu() {
 	if(d.getElementById('dashboardClientSelected')) {
+
 		d.getElementsByClassName('navDashBoard')[0].style.display = "none";
 		d.getElementById('dashboardClientSelected').style.opacity = "0";
 		window.setTimeout(function(){d.getElementById('dashboardClientSelected').style.display = "none"}, 500);
@@ -1018,8 +1078,6 @@ function ajaxJsonRequest(){
 
 var currentCRSelected;
 function readingMainJson(fileUrl,callback) {
-
-
 	var mygetrequest=new ajaxJsonRequest()
 	mygetrequest.onreadystatechange=function(){
 
@@ -1036,6 +1094,7 @@ function readingMainJson(fileUrl,callback) {
 
 				for (var i = 0; i < myObject.length; i++) {
 
+
 					if(k == 0) {
 						elemToBeGenerated += "<div>";
 					}
@@ -1049,33 +1108,18 @@ function readingMainJson(fileUrl,callback) {
 					currentCRSelected = myObject[i].requestCode;
 					elemToBeGenerated += "<span onclick=\"creditRequestSelected('"+currentCRSelected+"')\" class='"+mainColor+"'>";
 						elemToBeGenerated += "<span class='crTitle'>";
-						//elemToBeGenerated += "<b>" + myObject[i].requestCode + "</b>";
-						elemToBeGenerated += "<b>" + myObject[i].counterparty + "</b>";
+							elemToBeGenerated += "<b>" + myObject[i].counterparty + "</b>";
 						elemToBeGenerated += "</span>";
 						elemToBeGenerated += "<span class='crRequester'>";
-						//elemToBeGenerated +=  myObject[i].counterparty;
-						elemToBeGenerated +=  myObject[i].requestLbl;
-						elemToBeGenerated += "</span>";
-						elemToBeGenerated += "<span class='crPricing'>";
-						if(myObject[i].details) {
-							if(myObject[i].details.facilities) {
-								if(myObject[i].details.facilities[0].pricing){
-									var currentPricing = myObject[i].details.facilities[0].pricing;
-									elemToBeGenerated += currentPricing;
-								} else{
-									var currentPricing = "";
-									elemToBeGenerated += currentPricing;
-								};
-							}
-						}
+							elemToBeGenerated +=  myObject[i].requestLbl;
 						elemToBeGenerated += "</span>";
 						elemToBeGenerated += "<span class='crDeadline'>";
 						var deadline = new Date(myObject[i].deadlineDate);
-						elemToBeGenerated +=  "Deadline : " + deadline.getDate() + "/" + deadline.getMonth() + "/" + deadline.getYear();
-						elemToBeGenerated +=  "<br/>" + "Initiator : " + myObject[i].initiatorTeamLbl;
+						elemToBeGenerated +=  "deadline: " + deadline.getDate() + "/" + deadline.getMonth() + "/" + deadline.getYear();
+						elemToBeGenerated +=  "<br/>" + myObject[i].initiator;
 						elemToBeGenerated += "</span>";
 						elemToBeGenerated += "<span class='crStatus'>";
-						elemToBeGenerated +=  "&#8594;&nbsp;" + myObject[i].requestStatusLbl;
+							elemToBeGenerated +=  myObject[i].requestStatusLbl;
 						elemToBeGenerated += "</span>";
 					elemToBeGenerated += "</span>";
 
@@ -1110,9 +1154,6 @@ function readingMainJson(fileUrl,callback) {
 	mygetrequest.send(null)
 }
 
-
-/*
-
 function readingSpecificJson(fileUrl,callback) {
 
 	var mygetrequest=new ajaxJsonRequest()
@@ -1128,133 +1169,15 @@ function readingSpecificJson(fileUrl,callback) {
 
 					var elemToBeGenerated = "";
 
-					elemToBeGenerated += myObject.counterparty + " - " + myObject.requestLbl;
-					
-					
-					$('.clientNameRLabel').append(elemToBeGenerated);
-					
-
-					var elemToBeGenerated = "";
-
-					elemToBeGenerated += "<div class='graphs'><div class='graph'><h2 class='graph-title'>OR</h2><span class='graph-rate or'>5</span><canvas id='chartDoughnutOR' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Rating and Profitability</h3></div><div class='graph'><h2 class='graph-title'>RW</h2><span class='graph-rate'>45%</span><canvas id='chartDoughnutRW' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Weight</h3></div><div class='graph graph-medium'><h2 class='graph-title graph-title-line-chart'>VALUE</h6><canvas id='lineChartValue' width='432px' height='188px'></canvas></div></div>";
-
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Counterparty</span><span class='creditRequestR'>"+myObject.counterparty+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team</span><span class='creditRequestR'>"+myObject.teamLbl+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team Pending Actions</span><span class='creditRequestR'>"+myObject.teamPendingAction+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Urgent Credit Request</span><span class='creditRequestR'>"+myObject.urgentCreditRequest+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Initiator</span><span class='creditRequestR'>"+myObject.initiator+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Request Status</span><span class='creditRequestR'>"+myObject.requestStatusLbl+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Initiator Team</span><span class='creditRequestR'>"+myObject.initiatorTeamLbl+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Reception Date</span><span class='creditRequestR'>"+new Date(myObject.receptionDate)+"</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Deadline</span><span class='creditRequestR'>"+new Date(myObject.deadlineDate)+"</span></div>";
-
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subSection'>DETAILS</span><span class='creditRequestR'></span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.description+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.borrowers + "</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Guarantors</span><span class='creditRequestR'>"+myObject.details.guarantors + "</span></div>";
-
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Tranche</span><span class='creditRequestR'>"+myObject.details.facilities[0].tranche+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.facilities[0].borrowers + "</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Total</span><span class='creditRequestR'>"+myObject.details.facilities[0].total +"<span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>sg</span><span class='creditRequestR'>"+myObject.details.facilities[0].sg + " <span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Pricing</span><span class='creditRequestR'>"+myObject.details.facilities[0].pricing + "</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Repayment</span><span class='creditRequestR'>"+myObject.details.facilities[0].repayment + "</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Maturity</span><span class='creditRequestR'>"+myObject.details.facilities[0].maturity +"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Hedging</span><span class='creditRequestR'>"+myObject.details.hedging + " <span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Pricing</span><span class='creditRequestR'>"+myObject.details.facilities[0].pricing + "</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Repayment</span><span class='creditRequestR'>"+myObject.details.facilities[0].repayment + "</span></div>";
-
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Hedging</span><span class='creditRequestR'>"+myObject.details.hedging+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Flat Fee</span><span class='creditRequestR'>"+myObject.details.flat_fee+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Commitment Fee</span><span class='creditRequestR'>"+myObject.details.commitment_fee+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Security Package</span><span class='creditRequestR'>"+myObject.details.security_package+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Ownership</span><span class='creditRequestR'>"+myObject.details.ownership+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>SG Role</span><span class='creditRequestR'>"+myObject.details.sg_role+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>PCRU</span><span class='creditRequestR'>"+myObject.details.pcru+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Rating</span><span class='creditRequestR'>"+myObject.details.rating+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Scarce Resources</span><span class='creditRequestR'>"+myObject.details.scarce_resources+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Risk Rating</span><span class='creditRequestR'>"+myObject.details.risk_rating+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Country Limit</span><span class='creditRequestR'>"+myObject.details.country_limit+"</span></div>";
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Categorization</span><span class='creditRequestR'>"+myObject.details.categorization+"</span></div>";
-
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.glfi_rating.description+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>OR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.or+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>PD</span><span class='creditRequestR'>"+myObject.details.glfi_rating.pd+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>LGD</span><span class='creditRequestR'>"+myObject.details.glfi_rating.lgd+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RW</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rw+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>EL BPPA</span><span class='creditRequestR'>"+myObject.details.glfi_rating.el_bppa+ "</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>REVA</span><span class='creditRequestR'>"+myObject.details.glfi_rating.reva+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC after LCR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc_after_lcr+"</span></div>";
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Return on Funding</span><span class='creditRequestR'>"+myObject.details.glfi_rating.return_on_funding + "</span></div>";
-
-					elemToBeGenerated += "<div class='dashCRHighlightDate'>< "+new Date(myObject.deadlineDate);+"</div>";
-					elemToBeGenerated += "<div class='dashCRHighlightTotal'>< "+myObject.details.facilities[0].total+"<span class='cRCurrency'> (" + myObject.details.currency.toLowerCase() +")</span></div>";
-
-
-					d.getElementById('dashMainContentSection').innerHTML = elemToBeGenerated;
-
-
-				}
-
-				if(callback) {
-					callback();
-				}
-					d.getElementsByClassName('navDashBoard')[0].style.display = "block";
-
-					d.getElementById('dashboardClientSelected').style.display = "block";
-					window.setTimeout(function(){d.getElementById('dashboardClientSelected').style.opacity = "1"},500);
-
-
-					//testSticky();
-					//stickingThings();
-
-			} else {
-				alert("An error has occured making the request")
-			}
-		}
-	}
-	//if (document.URL.indexOf('?') === -1)
-	if( (fileUrl.indexOf('?') === -1) && (currentCRSelected) && (currentCRSelected != '') )  {
-		mygetrequest.open("GET", "proxy-list-fake.php?requestCode=" + currentCRSelected, true)
-		mygetrequest.send(null);
-	} else {
-		mygetrequest.open("GET", fileUrl, true)
-		mygetrequest.send(null);
-	}	
-}
-*/
-
-
-
-function readingSpecificJson(fileUrl,callback) {
-
-	var mygetrequest=new ajaxJsonRequest()
-	mygetrequest.onreadystatechange=function(){
-
-		if (mygetrequest.readyState==4){
-
-			if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
-
-				var myObject = eval('(' + mygetrequest.responseText + ')');
-
-				if(d.getElementsByClassName('dashboardClientSelected')) {
-
-					var elemToBeGenerated = "";
-
-					elemToBeGenerated += "<span class='clientLogo'><img src='' alt='' /></span>";					
-					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + " - " + myObject.requestLbl + "</span>";
+					elemToBeGenerated += "<span class='clientLogo'><img src='images/S-logo-white.png' alt='' width='50' /></span>";					
+					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + " - <span class='textThiner'>" + myObject.requestLbl + "</span></span>";
 					d.getElementById('dashboardClientSelected').innerHTML = elemToBeGenerated;
 
 					var elemToBeGenerated = "";
 
 					elemToBeGenerated += "<div class='graphs'><div class='graph'><h2 class='graph-title'>OR</h2><span class='graph-rate or'>5</span><canvas id='chartDoughnutOR' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Rating and Profitability</h3></div><div class='graph'><h2 class='graph-title'>RW</h2><span class='graph-rate'>45%</span><canvas id='chartDoughnutRW' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Weight</h3></div><div class='graph graph-medium'><h2 class='graph-title graph-title-line-chart'>VALUE</h6><canvas id='lineChartValue' width='432px' height='188px'></canvas></div></div>";
 
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
+					elemToBeGenerated += "<div class='tableCategories'><span>Credit Request Information</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Counterparty</span><span class='creditRequestR'>"+myObject.counterparty+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team</span><span class='creditRequestR'>"+myObject.teamLbl+"</span></div>";
@@ -1266,12 +1189,12 @@ function readingSpecificJson(fileUrl,callback) {
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Reception Date</span><span class='creditRequestR'>"+new Date(myObject.receptionDate)+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Deadline</span><span class='creditRequestR'>"+new Date(myObject.deadlineDate)+"</span></div>";
 
-						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subSection'>DETAILS</span><span class='creditRequestR'></span></div>";
+						elemToBeGenerated += "<div class='tableCategories'><span>DETAILS</span></div>";
 						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.description+"</span></div>";
 						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.borrowers + "</span></div>";
 						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Guarantors</span><span class='creditRequestR'>"+myObject.details.guarantors + "</span></div>";
 
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
+							elemToBeGenerated += "<div class='tableCategories'><span>FACILITIES</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Tranche</span><span class='creditRequestR'>"+myObject.details.facilities[0].tranche+"</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.facilities[0].borrowers + "</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Total</span><span class='creditRequestR'>"+myObject.details.facilities[0].total +"<span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
@@ -1296,7 +1219,7 @@ function readingSpecificJson(fileUrl,callback) {
 						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Country Limit</span><span class='creditRequestR'>"+myObject.details.country_limit+"</span></div>";
 						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Categorization</span><span class='creditRequestR'>"+myObject.details.categorization+"</span></div>";
 
-							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
+							elemToBeGenerated += "<div class='tableCategories'><span>FACILITIES</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.glfi_rating.description+"</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>OR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.or+"</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>PD</span><span class='creditRequestR'>"+myObject.details.glfi_rating.pd+"</span></div>";
@@ -1307,10 +1230,6 @@ function readingSpecificJson(fileUrl,callback) {
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc+"</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC after LCR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc_after_lcr+"</span></div>";
 							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Return on Funding</span><span class='creditRequestR'>"+myObject.details.glfi_rating.return_on_funding + "</span></div>";
-
-					elemToBeGenerated += "<div class='dashCRHighlightDate'>< "+new Date(myObject.deadlineDate);+"</div>";
-					elemToBeGenerated += "<div class='dashCRHighlightTotal'>< "+myObject.details.facilities[0].total+"<span class='cRCurrency'> (" + myObject.details.currency.toLowerCase() +")</span></div>";
-
 
 					d.getElementById('dashMainContentSection').innerHTML = elemToBeGenerated;
 
@@ -1390,21 +1309,25 @@ function stickingThings() {
 }
 
 
-document.ontouchstart = function(e) {
-//    stickingThings();
-};
-
-document.ontouchmove = function(e) {
-//    stickingThings();
-};
-
-document.ontouchend = function(e) {
-//    stickingThings();
-};
-
-
 function clearingPotentialInterval() {
 	clearInterval(stickingLeftDashMenu);
+}
+
+function swappingSearchKeysClasses(whichSelection) {
+
+	if (whichSelection == "type") {
+		d.getElementById('typeSortKey').className = "buttons";
+		d.getElementById('nameSortKey').className = "buttonsUnselected";
+		d.getElementById('dateSortKey').className = "buttonsUnselected";
+	} else if (whichSelection == "name") {
+		d.getElementById('typeSortKey').className = "buttonsUnselected";
+		d.getElementById('nameSortKey').className = "buttons";
+		d.getElementById('dateSortKey').className = "buttonsUnselected";
+	} else if (whichSelection == "date") {
+		d.getElementById('typeSortKey').className = "buttonsUnselected";
+		d.getElementById('nameSortKey').className = "buttonsUnselected";
+		d.getElementById('dateSortKey').className = "buttons";
+	}
 }
 
 
@@ -1425,12 +1348,67 @@ function backToInitState() {
 	}	
 }
 
+function documentsSortTools(whichSortKey) {
+	if(whichSortKey == "teamSort") {
+		d.getElementById('teamSort').style.color = "#060606";
+		d.getElementById('rankSort').style.color = "#B0B0B0";
+		d.getElementById('responseBySort').style.color = "#B0B0B0";
+		d.getElementById('typeSort').style.color = "#B0B0B0";
+		d.getElementById('responseOnSort').style.color = "#B0B0B0";
+	} else if(whichSortKey == "rankSort") {
+		d.getElementById('teamSort').style.color = "#B0B0B0";
+		d.getElementById('rankSort').style.color = "#060606";
+		d.getElementById('responseBySort').style.color = "#B0B0B0";
+		d.getElementById('typeSort').style.color = "#B0B0B0";
+		d.getElementById('responseOnSort').style.color = "#B0B0B0";
+	} else if(whichSortKey == "responseBySort") {
+		d.getElementById('rankSort').style.color = "#B0B0B0";
+		d.getElementById('teamSort').style.color = "#B0B0B0";
+		d.getElementById('responseBySort').style.color = "#060606";
+		d.getElementById('typeSort').style.color = "#B0B0B0";
+		d.getElementById('responseOnSort').style.color = "#B0B0B0";
+	}else if(whichSortKey == "typeSort") {
+		d.getElementById('rankSort').style.color = "#B0B0B0";
+		d.getElementById('teamSort').style.color = "#B0B0B0";
+		d.getElementById('responseBySort').style.color = "#B0B0B0";
+		d.getElementById('typeSort').style.color = "#060606";
+		d.getElementById('responseOnSort').style.color = "#B0B0B0";
+	} else if(whichSortKey == "responseOnSort") {
+		d.getElementById('rankSort').style.color = "#B0B0B0";
+		d.getElementById('teamSort').style.color = "#B0B0B0";
+		d.getElementById('responseBySort').style.color = "#B0B0B0";
+		d.getElementById('typeSort').style.color = "#B0B0B0";
+		d.getElementById('responseOnSort').style.color = "#060606";
+	} else {
+		d.getElementById('rankSort').style.color = "#060606";
+		d.getElementById('teamSort').style.color = "#B0B0B0";
+		d.getElementById('responseBySort').style.color = "#B0B0B0";
+		d.getElementById('typeSort').style.color = "#B0B0B0";
+		d.getElementById('responseOnSort').style.color = "#B0B0B0";		
+	}
+}
+
 backToInitState();
 
 if(d.getElementById('startingExperience')) {
 	d.getElementById('startingExperience').setAttribute('onclick', "splashscreen()");	
 }
 
+
+function removingDocViewer() {
+	if(d.getElementById('documentsOverlay')) {
+		d.getElementById('documentsOverlay').style.opacity = 0;	
+		window.setTimeout(function(){d.getElementById('documentsOverlay').style.display = "none"}, 500);
+	d.getElementById('docOverLayBackground').setAttribute("style","-webkit-filter:grayscale(0%)");
+	};
+	
+}
+
+function displayDocViewer() {
+	d.getElementById('documentsOverlay').style.display = "block";
+	window.setTimeout(function(){d.getElementById('documentsOverlay').style.opacity = 1}, 500);
+	d.getElementById('docOverLayBackground').setAttribute("style","-webkit-filter:grayscale(100%)")
+}
 
 
 
