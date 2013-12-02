@@ -27,7 +27,8 @@ body {
 
 #mainBackground {
 	width: 1024px;
-	height: 583px;
+	/*height: 583px;*/
+	height: 610px;
 	position: fixed;
 	/*top: 185px;*/
 	top: 145px;
