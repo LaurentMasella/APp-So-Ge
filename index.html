@@ -225,8 +225,7 @@
 
 			<!-- Dashboard 	-->
 			<section id="navDashBoard" style="display: none;">
-				<div id="navDashBoardRightBorder">
-					
+				<div id="navDashBoardRightBorder">	
 				</div>
 
 				<ul>
@@ -250,58 +249,385 @@
 				</div>
 			</section>
 			<section id="dashMain">
-				<section id="dashMainContentSection" style="display: none; top: 160px;">
+				<section id="dashMainContentSection" style="display: none; top: 140px;">
 				</section>
-				<section id="dashMainContentDumentsSection" style="display: none; top: 160px;">
-					<img src="images/img_documents.jpg" width="910" />
+
+				<section id="dashMainContentDumentsSection" style="display: none; top: 100px;">
 
 					<div id="documentsView">
-						<input type="text" id="searchDocs" />
 
-						<span>
-							DATE
-						</span>
-						<span>
-							NAME
-						</span>
-						<span>
-							TYPE
-						</span>
-
+						<div class="docsTable">
+							<div class="docTableRow">
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-0.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-1.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-2.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-3.png" alt="" width="150" />
+								</span>
+							</div>
+							<div class="docTableRow">
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-4.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-5.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-6.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-0.png" alt="" width="150" />
+								</span onclick="displayDocViewer()">
+							</div>
+							<div class="docTableRow">
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-1.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-2.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-3.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-4.png" alt="" width="150" />
+								</span>
+							</div>
+							<div class="docTableRow">
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-5.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-6.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-0.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-1.png" alt="" width="150" />
+								</span>
+							</div>
+							<div class="docTableRow">
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-2.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-3.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-4.png" alt="" width="150" />
+								</span>
+								<span onclick="displayDocViewer()">
+									<img src="images/dossier-5.png" alt="" width="150" />
+								</span>
+							</div>
+						</div>
 					</div>
 
+
+
 				</section>
-				<section id="dashMainContentSummarySection" style="display: none; top: 160px;">
-					<div id="summuryPic"></div>
+				<section id="dashMainContentSummarySection" style="display: none; top: 140px;">
+					<div class="mainSummaryContainer">
+						<h2 class="responsesSubTitle">Credit Responses <b>Summary</b></h2>
+
+						<div class="responsesTable" style="border-bottom: 1px solid #B8B8B8">
+							<span onclick="documentsSortTools('teamSort')" id="teamSort" class="responsesTableCells headerTableSort">
+								Team
+							</span>
+							<span onclick="documentsSortTools('rankSort')" id="rankSort" class="responsesTableCells headerTableSort">
+								Rank
+							</span>
+							<span onclick="documentsSortTools('responseBySort')" id="responseBySort" class="responsesTableCells headerTableSort">
+								Response By
+							</span>
+							<span onclick="documentsSortTools('typeSort')" id="typeSort" class="responsesTableCells headerTableSort">
+								Type
+							</span>
+							<span onclick="documentsSortTools('responseOnSort')" id="responseOnSort" class="responsesTableCells headerTableSort">
+								Response On
+							</span>
+						</div>
+
+						<div class="responsesTable">
+							<span class="responsesTableCells">
+								ITEC/FCC/OSD
+							</span>
+							<span class="responsesTableCells">
+								1
+							</span>
+							<span class="responsesTableCells">
+								Mark Linsolas
+							</span>
+							<span class="responsesTableCells">
+								Kick off
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									2013-11-13
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked" checked></input>
+								<label>		
+							</span>
+						</div>
+
+						<div class="responsesTable responsesTableGreRow">
+							<span class="responsesTableCells">
+								ITEC/FCC/OSD
+							</span>
+							<span class="responsesTableCells">
+								1
+							</span>
+							<span class="responsesTableCells">
+								Edouard Sousak
+							</span>
+							<span class="responsesTableCells">
+								Validated
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									2013-11-13
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked" checked></input>
+								<label>		
+							</span>
+						</div>
+
+						<div class="responsesTable">
+							<span class="responsesTableCells ">
+								CGC/EUR/FIG
+							</span>
+							<span class="responsesTableCells">
+								1
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									Pending
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked"></input>
+								<label>		
+							</span>
+						</div>
+
+						<div class="responsesTable responsesTableGreRow">
+							<span class="responsesTableCells ">
+								CORI/COV/ENE
+							</span>
+							<span class="responsesTableCells">
+								2
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									Pending
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked"></input>
+								<label>		
+							</span>
+						</div>	
+
+						<div class="responsesTable">
+							<span class="responsesTableCells ">
+								CGC/USA/XXX
+							</span>
+							<span class="responsesTableCells">
+								3
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									Pending
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked"></input>
+								<label>		
+							</span>
+						</div>	
+
+
+						<div class="responsesTable responsesTableGreRow">
+							<span class="responsesTableCells ">
+								CGC/USA/FIS
+							</span>
+							<span class="responsesTableCells">
+								4
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									Pending
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked"></input>
+								<label>		
+							</span>
+						</div>	
+
+
+						<div class="responsesTable">
+							<span class="responsesTableCells ">
+								CGC/USA/SCM
+							</span>
+							<span class="responsesTableCells">
+								5
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								--
+							</span>
+							<span class="responsesTableCells">
+								
+								<label>
+									Pending
+									<input type="checkbox" onclick="return false" name="test" class="selectedResponse" value="checked"></input>
+								<label>		
+							</span>
+						</div>
+					</div>
 				</section>
 			</section>
 			<!-- End of Dashboard 	-->
 
 			<section id="actionForm" style="display: none">
 	            <div class="container">
-	              <div class="range" id="accept">
-	                  <h2 class="content-slider-titre">Accept</h2>
-	                  <h3 class="content-slider__sous-titre">Credit Request</h3>
+					<div class="range" id="accept">
+						<h2 class="content-slider-titre">Accept</h2>
+						<h3 class="content-slider__sous-titre">Credit Request</h3>
 
 						<div id="rangeLine" class="neutral"><span id="validated"></span><span id="canceled"></span></div>
 
-					  	<input onclick="chacingColorOfSlider();" id="rangeSlider" type="range" class="myOwnSlider" />
+							<input onclick="chacingColorOfSlider();" id="rangeSlider" type="range" class="myOwnSlider" />
 
-	                  <h2 class="content-slider-titre" style="margin-top: 400px;">Refus
-	                  </h2>
-	                  <h3 class="content-slider__sous-titre">Credit Request</h3>canceled
-	              </div> <!-- end #accept -->
+						<h2 class="content-slider-titre" style="margin-top: 430px;">Refus
+						</h2>
+						<h3 class="content-slider__sous-titre">Credit Request</h3>canceled
+					</div> <!-- end #accept -->
 					
-					<div id="formImage"></div>
+					<div class="actionForm">
+						<span class='actionFormTitle'>Validator Comment</span>
+						<br/>
+						<span class='actionFormSubTitle'>Gibe your comment to explain your choice</span>
+						<br/>
+						<textarea class='actionFormTextarea' placeholder="Write your comment to explain your choice..."></textarea>
+					</div>
 
 	            </div> <!-- end .container -->
 	        </section>
 
 	        <section id="submitSection" style="display: none">
 				<div>
-					<a href="index.html">
-						<img src="images/08-submission.jpg" style="display: inline-block; margin-top: -80px;" width="1024" />
-					</a>
+
+					<div class="statusContainer">
+						<span class="statusTitle">
+							<span class="rotatingStatus"> 
+								<img src="images/img_picto_validation_2x.png" alt="" width="53px" /> 
+							</span>ACCEPTED</span>
+						</span>
+					</div>
+
+					<div class="statusDetailsContainer">
+
+						<div class="statusTableRow">
+							<span class="statusTableCellL">
+								REQUEST 12300
+
+								<span class="statusLogo">
+									<img src="images/img_logo_bouygues_2x.png" alt="" width="185" />
+								</span>
+
+								<span class="statusSubHeadline">
+									TRANSACTION NAME
+								</span>
+
+								<span class="statusClientText">
+									Transaction Bouygues
+									<br/>
+									SPAIN 122013
+								</span>
+							</span>
+							<span class="statusTableCellR">
+								<span class="statusTableCellRCells">
+									<img src="images/img_picto_calendrier_2x.png" alt="" width="62" />
+									<span class="statusSubHeadline">
+										<b>DEMAND</b>
+									</span>
+									<span>
+										06/12/2013
+									</span>
+									<span class="statusSubHeadline">
+										<b>TIMING DEADLINE </b>
+									</span>
+									<span>
+										16/12/2013
+									</span>
+								</span>
+								<span class="statusTableCellRCells">
+									<img src="images/img_picto_tete_2x.png" alt="" width="57" />
+									<span class="statusSubHeadline">
+										<b>TRANSACTION TEAM</b>
+									</span>
+									<span>
+										Fernando Alvarez
+										<br/>
+										Pierre Legrand, Olivier Dutoit
+										<br/>
+										Andrew Gilles
+									</span>									
+								</span>
+								<span class="statusTableCellRCells">
+									<img src="images/img_picto_infos_2x.png" alt="" width="86" style="margin-top: -10px;" />
+									<span class="statusSubHeadline">
+										<b>FORM REQUEST</b>
+									</span>
+									<span>
+										Firm approval
+									</span>					
+								</span>
+								<span class="statusTableCellRCells">
+									<img src="images/img_picto_SG_2x.png" alt="" width="56" style="margin-top: 5px;" />
+									<span class="statusSubHeadline">
+										<b>SG ROLE</b>
+									</span>
+									<span>
+										Participant
+									</span>
+								</span>
+								<br/>
+								<span class="statusDescr">
+									PURPOSE DESCRIPTION / Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+								</span>
+							</span>
+						</div>
+
+
+					</div>
 				</div>
 			</section>
 

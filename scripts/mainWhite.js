@@ -875,8 +875,13 @@ function runningDashAjaxCall(currentURL,callback) {
 	removingDocViewer();
 
 	d.getElementById('UXLoader').style.display = "none";
-	d.getElementById('documentsSearchTools').style.display = "none";
-	d.getElementById('dashMainContentDumentsSection').style.display = "none";
+	if(d.getElementById('documentsSearchTools')) {
+		d.getElementById('documentsSearchTools').style.display = "none";	
+	};
+	if(d.getElementById('dashMainContentDumentsSection')) {
+		d.getElementById('dashMainContentDumentsSection').style.display = "none";
+	};
+	
 
 	var container = d.getElementById('dashMain');
 	container.className = "dashMainContentSectionToBeRemoved";
@@ -912,7 +917,10 @@ function runningDashAjaxCall(currentURL,callback) {
 			d.getElementById('dashMainContentDumentsSection').style.display = "block";
 			container.className = "dashMainContentSectionReset";
 			d.getElementById('UXLoader').style.display = "none";
-			d.getElementById('documentsSearchTools').style.display = "block";
+			if(d.getElementById('documentsSearchTools')) {
+				d.getElementById('documentsSearchTools').style.display = "block";	
+			}
+			
 
 		} else  if (currentURL == "verify-summury.html") {
 			
