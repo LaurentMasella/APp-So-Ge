@@ -42,10 +42,11 @@ function changingMenuState(whichSteAreWe) {
 		stepNumber3.innerHTML = "3";
 		stepNumber4.className = "stepNumberDark";
 		stepNumber4.innerHTML = "4";
-
+/*
 		step12.className = "stepStatusLineMid";
 		step23.className = "stepStatusLineDark";
 		step34.className = "stepStatusLineDark";
+*/		
 	} else if (whichSteAreWe == "2") {
 		buttonElem1.className = "setToBlue";
 		buttonElem2.className = "setToBlue";
@@ -60,10 +61,11 @@ function changingMenuState(whichSteAreWe) {
 		stepNumber3.innerHTML = "3";		
 		stepNumber4.className = "stepNumberDark";
 		stepNumber4.innerHTML = "4";		
-
+/*
 		step12.className = "stepStatusLineBlue";
 		step23.className = "stepStatusLineMid";
 		step34.className = "stepStatusLineDark";
+*/		
 	} else if (whichSteAreWe == "3") {
 		buttonElem1.className = "setToBlue";
 		buttonElem2.className = "setToBlue";
@@ -78,10 +80,11 @@ function changingMenuState(whichSteAreWe) {
 		stepNumber3.innerHTML = "3";		
 		stepNumber4.className = "stepNumberDark";
 		stepNumber4.innerHTML = "4";		
-
+/*
 		step12.className = "stepStatusLineBlue";
 		step23.className = "stepStatusLineBlue";
 		step34.className = "stepStatusLineMid";
+*/		
 	} else if (whichSteAreWe == "4") {
 		buttonElem1.className = "setToBlue";
 		buttonElem2.className = "setToBlue";
@@ -95,10 +98,11 @@ function changingMenuState(whichSteAreWe) {
 		stepNumber3.className = "stepNumberBlue";
 		stepNumber3.innerHTML = "√";		
 		stepNumber4.className = "stepNumberBlue";
-
+/*
 		step12.className = "stepStatusLineBlue";
 		step23.className = "stepStatusLineBlue";
 		step34.className = "stepStatusLineBlue";
+*/		
 	}
 }
 
@@ -1115,12 +1119,8 @@ function readingMainJson(fileUrl,callback) {
 				var k = 0;
 				
 				for (var i = 0; i < myObject.length; i++) {
-<<<<<<< HEAD
 
-
-=======
 					var z = Math.floor((Math.random()*8)+1);
->>>>>>> Css-Laurent
 					if(k == 0) {
 						elemToBeGenerated += "<div>";
 					}
@@ -1133,14 +1133,10 @@ function readingMainJson(fileUrl,callback) {
 
 					currentCRSelected = myObject[i].requestCode;
 					elemToBeGenerated += "<span onclick=\"creditRequestSelected('"+currentCRSelected+"')\" class='"+mainColor+"'>";
-<<<<<<< HEAD
-						elemToBeGenerated += "<span class='crTitle'>";
-							elemToBeGenerated += "<b>" + myObject[i].counterparty + "</b>";
-=======
+
 						elemToBeGenerated += "<span class='crTitle crTitle"+z+"'>";
 						//elemToBeGenerated += "<b>" + myObject[i].requestCode + "</b>";
 						elemToBeGenerated += "<b>" + myObject[i].counterparty + "</b>";
->>>>>>> Css-Laurent
 						elemToBeGenerated += "</span>";
 						elemToBeGenerated += "<span class='crRequester'>";
 							elemToBeGenerated +=  myObject[i].requestLbl;
@@ -1321,14 +1317,8 @@ function readingSpecificJson(fileUrl,callback) {
 				if(d.getElementsByClassName('dashboardClientSelected')) {
 
 					var elemToBeGenerated = "";
-<<<<<<< HEAD
-
-
-					elemToBeGenerated += "<span class='clientLogo'><img src='' alt='' /></span>";					
-=======
 					var z = Math.floor((Math.random()*8)+1);
 					elemToBeGenerated += "<span class='clientLogo clientLogo"+z+"'><img src='' alt='' /></span>";					
->>>>>>> Css-Laurent
 					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + "<br/>" + "<span id='requestLbl'>" + myObject.requestLbl + "</span></span>";
 
 					d.getElementById('dashboardClientSelected').innerHTML = elemToBeGenerated;
@@ -1337,16 +1327,12 @@ function readingSpecificJson(fileUrl,callback) {
 
 					elemToBeGenerated += "<div class='graphs'><div class='graph'><h2 class='graph-title'>OR</h2><span class='graph-rate or'>5</span><canvas id='chartDoughnutOR' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Rating and Profitability</h3></div><div class='graph'><h2 class='graph-title'>RW</h2><span class='graph-rate'>45%</span><canvas id='chartDoughnutRW' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Weight</h3></div><div class='graph graph-medium'><h2 class='graph-title graph-title-line-chart'>VALUE</h6><canvas id='lineChartValue' width='432px' height='188px'></canvas></div></div>";
 
-<<<<<<< HEAD
-					elemToBeGenerated += "<div class='tableCategories'><span>Credit Request Information</span></div>";
-					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
-=======
+
 					//elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
 					elemToBeGenerated += "<div class='tableHead'><p class='requestInfo'>Credit Request Information</p><div class='redLine'></div><div class='clear'></div></div>";
 
 
 					elemToBeGenerated += "<div class='tableRow tableRow1'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
->>>>>>> Css-Laurent
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Counterparty</span><span class='creditRequestR'>"+myObject.counterparty+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team</span><span class='creditRequestR'>"+myObject.teamLbl+"</span></div>";
 					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team Pending Actions</span><span class='creditRequestR'>"+myObject.teamPendingAction+"</span></div>";

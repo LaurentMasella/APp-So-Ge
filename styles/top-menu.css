@@ -57,12 +57,11 @@
 	margin-top: 15px;
 	vertical-align: top;
 	display: inline-block;
-	width: 145px;
-	-webkit-border-radius: 12px;
+	width: 165px;
 	font-size: 0.8em;
 	padding: 2px 10px 5px 5px;
 	font-weight: 100;
-	height: 30px;
+	height: 40px;
 	text-align: center;
 	-webkit-transition: all ease-in-out 250ms;
 	-webkit-transform: translate3d(0, 0, 0);
@@ -70,18 +69,18 @@
 
 .navStepMenuLabels {
 	display: inline-block;
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 #navStepMenu a.setToBlue {
-	background-color: #009ADD;
+/*	background-color: #009ADD;*/
 	color: #D9EFFA;
 	letter-spacing: 1px;
 }
 
 #navStepMenu a.setToDark {
-	background-color: #111010;
-	color: #A5A6A8;
+/*	background-color: #FFF;*//
+	color: #939393;
 	opacity: 0.5;
 }
 
@@ -99,6 +98,7 @@
 	border: 1px solid #13A5E0;
 	background-color: #1BA9E2;
 	color: #FDFEFE;
+	margin-top: 5px;
 	padding: 5px 10px 5px 10px;
 }
 
@@ -106,7 +106,7 @@
 	border: none;
 	color: #8C8C8B;
 	background-color: transparent;
-	padding: 7px 10px 5px 10px;
+	padding: 10px 10px 5px 10px;
 }
 
 #step12, #step23, #step34 {
@@ -160,9 +160,17 @@
 	                 transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
 	                 transparent 75%, transparent) 0 0 / 10px 10px, #EDEDED;
 	opacity: 0.2;
-	}
+}
 
 #navStepMenu a.setToBlueNotSelected { 
 	background-color: #009ADD;
 	box-shadow: 0px 0px 10px 0px rgba(166,226,42, .8);
 	color:#FFFFFF;
+}
+
+#navStepMenu {
+	margin-top: 15px;
+	background: url('../images/white/timeline_2.png') transparent left top;
+	background-size: 771px 250px;	
+
+}
