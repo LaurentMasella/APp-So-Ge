@@ -33,9 +33,10 @@
 }
 
 .navDashBoard li.blue, .navDashBoardFixed li.blue {
-	background-color: #0096E1;
+	/*background-color: #0096E1;
 	color: #E8F7FB;
-	border-bottom: 1px solid #0096E1;
+	border-bottom: 1px solid #0096E1;*/
+	background-color: #fff;
 }
 
 .navDashBoard li.dark, .navDashBoardFixed li.dark {
@@ -58,10 +59,11 @@
 
 #dashboardClientSelected {
 	/*padding: 15px 10px 0px 15px;*/
-	float: left;
+	/*float: left;*/
 	display: none;
 	z-index: 10000;
-	position: fixed;
+	margin: 0!important;
+	/*position: fixed;
 	top: 85px;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -72,19 +74,22 @@
 }
 
 .clientLogo {
-	display: inline-block;
+	/*display: inline-block;
 	width: 110px;
 	height: 100px;
-	background-color: #FFFFFF;
+	background-color: #FFFFFF;*/
 
 }
 
 .clientNameRLabel {
 	font-family:  "Helvetica neue";
 	display: inline-block;
-	font-size: 1.4em;
+	/*font-size: 1.4em;
 	font-weight: 300;
-	color: #FEFEFE;
+	color: #FEFEFE;*/
+	font-size: 1em;
+	font-weight: bold;
+	color: #000;
 	vertical-align: bottom;
 	padding: 30px 35px 40px 40px;
 	width: 800px;
@@ -93,10 +98,18 @@
 	text-overflow: ellipsis;
 }
 
+#requestLbl {
+	font-size: 0.7em;
+	font-weight: lighter;
+	color: #303030;
+}
+
 .dashLeftMenu {
-	float: left;
+	/*float: left;*/
 	position: fixed;
-	top: 185px;
+	/*top: 185px;*/
+	top: 245px;
+	left: 10px;
 }
 
 
@@ -148,7 +161,8 @@
 
 #dashMainContentSection {
 	position: absolute;
-	left: 130px;
+	/*left: 130px;*/
+	left: 120px;
 	width: 880px;
 	min-height: 88%;
 	-webkit-transform: translate3d(0, 0,0);
@@ -156,10 +170,13 @@
 	z-index: 0;
 	font-family:  "Helvetica neue";
 	letter-spacing: 1px;
-	color: #FEFEFE;
+	/*color: #FEFEFE;*/
+	color: #000;
 	font-weight: 100;
 	padding-bottom: 100px;
 	opacity: 0;
+	background: #fff;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.18);
 }
 
 #dashMainContentSection div.tableRow {

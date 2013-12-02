@@ -3,7 +3,9 @@
 	opacity: 0; 
 	-webkit-transition: opacity ease-in-out 1500ms;
 }
+#toto {
 
+}
 #userIDConnect {
 	padding-top: 25px;
 	padding-left: 10px;
@@ -271,7 +273,8 @@
 }
 
 .graphs {
-	padding: 8px 15px;
+	margin-top: 20px;
+	padding: 0 15px 8px 15px;
 	overflow: hidden;
 	width: inherit;
 	font-family:  "Helvetica neue";
@@ -302,7 +305,8 @@
 	width: 700px;
 	height: 37px;
 	margin-top: 7px;
-	margin-left: 60px;
+	/*margin-left: 60px;*/
+	margin-left: 40px;
 }
 
 #navStepMenu.dashboard {
@@ -387,17 +391,30 @@
 }
 
 #nextButton {
-	background: url('../../images/btn_next-step.png') no-repeat top left;
+	/*background: url('../../images/btn_next-step.png') no-repeat top left;
 	background-size: 87px 72px;
-	width: 87px;
-	height: 36px;
+	width: 87px;*/
+	height: 38px;
+	line-height: 38px;
+	color: #009cce;
 	display: inline-block;
 	z-index: 100000;
 	vertical-align: top;
-	margin-top: 25px;
-	margin-right: 20px;
+	/*margin-top: 25px;
+	margin-right: 20px;*/
+	margin-top: 22px;
+	padding: 0 30px 0 5px;
 	float: right;
 	display: none;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	background: url('../../images/white/img_fleches_bleu.png') no-repeat 120px -43px;
+	background-size: 30px;
+	-moz-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	-webkit-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	-o-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	box-shadow: 0px 3px 3px 0px #dfdfdf;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#dfdfdf, Direction=180, Strength=3);
 }
 
 #nextButton.hidden {

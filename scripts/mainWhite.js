@@ -1162,6 +1162,11 @@ function readingMainJson(fileUrl,callback) {
 	mygetrequest.send(null)
 }
 
+<<<<<<< HEAD
+=======
+
+/*
+
 function readingSpecificJson(fileUrl,callback) {
 
 	var mygetrequest=new ajaxJsonRequest()
@@ -1177,8 +1182,129 @@ function readingSpecificJson(fileUrl,callback) {
 
 					var elemToBeGenerated = "";
 
-					elemToBeGenerated += "<span class='clientLogo'><img src='images/S-logo-white.png' alt='' width='50' /></span>";					
-					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + " - <span class='textThiner'>" + myObject.requestLbl + "</span></span>";
+					elemToBeGenerated += myObject.counterparty + "<br/>" + myObject.requestLbl;
+					
+					
+					$('.clientNameRLabel').append(elemToBeGenerated);
+					
+
+					var elemToBeGenerated = "";
+
+					elemToBeGenerated += "<div class='graphs'><div class='graph'><h2 class='graph-title'>OR</h2><span class='graph-rate or'>5</span><canvas id='chartDoughnutOR' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Rating and Profitability</h3></div><div class='graph'><h2 class='graph-title'>RW</h2><span class='graph-rate'>45%</span><canvas id='chartDoughnutRW' width='165px' height='165px'></canvas><h3 class='graph-label'>Risk Weight</h3></div><div class='graph graph-medium'><h2 class='graph-title graph-title-line-chart'>VALUE</h6><canvas id='lineChartValue' width='432px' height='188px'></canvas></div></div>";
+
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Credit Request Information</span><span class='creditRequestR'></span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Type of Request</span><span class='creditRequestR'>"+myObject.requestType+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Counterparty</span><span class='creditRequestR'>"+myObject.counterparty+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team</span><span class='creditRequestR'>"+myObject.teamLbl+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Team Pending Actions</span><span class='creditRequestR'>"+myObject.teamPendingAction+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Urgent Credit Request</span><span class='creditRequestR'>"+myObject.urgentCreditRequest+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Initiator</span><span class='creditRequestR'>"+myObject.initiator+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Request Status</span><span class='creditRequestR'>"+myObject.requestStatusLbl+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Initiator Team</span><span class='creditRequestR'>"+myObject.initiatorTeamLbl+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Reception Date</span><span class='creditRequestR'>"+new Date(myObject.receptionDate)+"</span></div>";
+					elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Deadline</span><span class='creditRequestR'>"+new Date(myObject.deadlineDate)+"</span></div>";
+
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subSection'>DETAILS</span><span class='creditRequestR'></span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.description+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.borrowers + "</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Guarantors</span><span class='creditRequestR'>"+myObject.details.guarantors + "</span></div>";
+
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Tranche</span><span class='creditRequestR'>"+myObject.details.facilities[0].tranche+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Borrowers</span><span class='creditRequestR'>"+myObject.details.facilities[0].borrowers + "</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Total</span><span class='creditRequestR'>"+myObject.details.facilities[0].total +"<span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>sg</span><span class='creditRequestR'>"+myObject.details.facilities[0].sg + " <span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Pricing</span><span class='creditRequestR'>"+myObject.details.facilities[0].pricing + "</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Repayment</span><span class='creditRequestR'>"+myObject.details.facilities[0].repayment + "</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Maturity</span><span class='creditRequestR'>"+myObject.details.facilities[0].maturity +"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Hedging</span><span class='creditRequestR'>"+myObject.details.hedging + " <span class='cRCurrency'>" + myObject.details.currency.toLowerCase() +"</span></span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Pricing</span><span class='creditRequestR'>"+myObject.details.facilities[0].pricing + "</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Repayment</span><span class='creditRequestR'>"+myObject.details.facilities[0].repayment + "</span></div>";
+
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Hedging</span><span class='creditRequestR'>"+myObject.details.hedging+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Flat Fee</span><span class='creditRequestR'>"+myObject.details.flat_fee+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Commitment Fee</span><span class='creditRequestR'>"+myObject.details.commitment_fee+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Security Package</span><span class='creditRequestR'>"+myObject.details.security_package+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Ownership</span><span class='creditRequestR'>"+myObject.details.ownership+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>SG Role</span><span class='creditRequestR'>"+myObject.details.sg_role+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>PCRU</span><span class='creditRequestR'>"+myObject.details.pcru+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Rating</span><span class='creditRequestR'>"+myObject.details.rating+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Scarce Resources</span><span class='creditRequestR'>"+myObject.details.scarce_resources+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Risk Rating</span><span class='creditRequestR'>"+myObject.details.risk_rating+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Country Limit</span><span class='creditRequestR'>"+myObject.details.country_limit+"</span></div>";
+						elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Categorization</span><span class='creditRequestR'>"+myObject.details.categorization+"</span></div>";
+
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL subUnderSection'>FACILITIES</span><span class='creditRequestR'></span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Description</span><span class='creditRequestR'>"+myObject.details.glfi_rating.description+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>OR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.or+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>PD</span><span class='creditRequestR'>"+myObject.details.glfi_rating.pd+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>LGD</span><span class='creditRequestR'>"+myObject.details.glfi_rating.lgd+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RW</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rw+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>EL BPPA</span><span class='creditRequestR'>"+myObject.details.glfi_rating.el_bppa+ "</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>REVA</span><span class='creditRequestR'>"+myObject.details.glfi_rating.reva+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>RARORC after LCR</span><span class='creditRequestR'>"+myObject.details.glfi_rating.rarorc_after_lcr+"</span></div>";
+							elemToBeGenerated += "<div class='tableRow'><span class='creditRequestL'>Return on Funding</span><span class='creditRequestR'>"+myObject.details.glfi_rating.return_on_funding + "</span></div>";
+
+					elemToBeGenerated += "<div class='dashCRHighlightDate'>< "+new Date(myObject.deadlineDate);+"</div>";
+					elemToBeGenerated += "<div class='dashCRHighlightTotal'>< "+myObject.details.facilities[0].total+"<span class='cRCurrency'> (" + myObject.details.currency.toLowerCase() +")</span></div>";
+
+
+					d.getElementById('dashMainContentSection').innerHTML = elemToBeGenerated;
+
+
+				}
+
+				if(callback) {
+					callback();
+				}
+					d.getElementsByClassName('navDashBoard')[0].style.display = "block";
+
+					d.getElementById('dashboardClientSelected').style.display = "block";
+					window.setTimeout(function(){d.getElementById('dashboardClientSelected').style.opacity = "1"},500);
+
+
+					//testSticky();
+					//stickingThings();
+
+			} else {
+				alert("An error has occured making the request")
+			}
+		}
+	}
+	//if (document.URL.indexOf('?') === -1)
+	if( (fileUrl.indexOf('?') === -1) && (currentCRSelected) && (currentCRSelected != '') )  {
+		mygetrequest.open("GET", "proxy-list-fake.php?requestCode=" + currentCRSelected, true)
+		mygetrequest.send(null);
+	} else {
+		mygetrequest.open("GET", fileUrl, true)
+		mygetrequest.send(null);
+	}	
+}
+*/
+
+
+
+>>>>>>> Css-Laurent
+function readingSpecificJson(fileUrl,callback) {
+
+	var mygetrequest=new ajaxJsonRequest()
+	mygetrequest.onreadystatechange=function(){
+
+		if (mygetrequest.readyState==4){
+
+			if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
+
+				var myObject = eval('(' + mygetrequest.responseText + ')');
+
+				if(d.getElementsByClassName('dashboardClientSelected')) {
+
+					var elemToBeGenerated = "";
+
+
+					elemToBeGenerated += "<span class='clientLogo'><img src='' alt='' /></span>";					
+					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + "<br/>" + "<span id='requestLbl'>" + myObject.requestLbl + "</span></span>";
+
 					d.getElementById('dashboardClientSelected').innerHTML = elemToBeGenerated;
 
 					var elemToBeGenerated = "";
