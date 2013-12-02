@@ -1128,7 +1128,7 @@ function readingSpecificJson(fileUrl,callback) {
 
 					var elemToBeGenerated = "";
 
-					elemToBeGenerated += myObject.counterparty + " - " + myObject.requestLbl;
+					elemToBeGenerated += myObject.counterparty + "<br/>" + myObject.requestLbl;
 					
 					
 					$('.clientNameRLabel').append(elemToBeGenerated);
@@ -1247,7 +1247,7 @@ function readingSpecificJson(fileUrl,callback) {
 					var elemToBeGenerated = "";
 
 					elemToBeGenerated += "<span class='clientLogo'><img src='' alt='' /></span>";					
-					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + " - " + myObject.requestLbl + "</span>";
+					elemToBeGenerated += "<span class='clientNameRLabel'>" + myObject.counterparty + "<br/>" + "<span id='requestLbl'>" + myObject.requestLbl + "</span></span>";
 					d.getElementById('dashboardClientSelected').innerHTML = elemToBeGenerated;
 
 					var elemToBeGenerated = "";

@@ -10,8 +10,10 @@
 }
 
 #logoHeadBand #optHolder {
-	float: right;
-	width: 200px;
+	position: fixed;
+	top: 0;
+	right: 10px;
+	/*width: 200px;*/
 	height: 45px;
 	margin-top: 20px;
 }
@@ -39,16 +41,27 @@
 	/*background: rgba(0, 0, 0, .27);*/
 	z-index: 10000;
 	/*position: fixed;*/
+	position: relative;
 }
 
 #topNavBarBackButton {
 	display: inline-block;
-	background: url('../../images/img_button_back.png') no-repeat left top;
+	/*background: url('../../images/img_button_back.png') no-repeat left top;
 	background-size: 75px 150px;
 	height: 85px;
 	width: 110px;
 	margin-top: 3px;
-	margin-left: 28px;
+	margin-left: 28px;*/
+	width: 50px;
+	height: 38px;
+	margin: 22px 56px 0 0;
+	background: url('../../images/white/img_fleches_bleu.png') no-repeat 8px 0;
+	background-size: 30px;
+	-moz-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	-webkit-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	-o-box-shadow: 0px 3px 3px 0px #dfdfdf;
+	box-shadow: 0px 3px 3px 0px #dfdfdf;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#dfdfdf, Direction=180, Strength=3);
 }
 
 #topNavBarBackBorder {
