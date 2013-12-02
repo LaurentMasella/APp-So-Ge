@@ -1162,8 +1162,6 @@ function readingMainJson(fileUrl,callback) {
 	mygetrequest.send(null)
 }
 
-<<<<<<< HEAD
-=======
 
 /*
 
@@ -1285,7 +1283,6 @@ function readingSpecificJson(fileUrl,callback) {
 
 
 
->>>>>>> Css-Laurent
 function readingSpecificJson(fileUrl,callback) {
 
 	var mygetrequest=new ajaxJsonRequest()
